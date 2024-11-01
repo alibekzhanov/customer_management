@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <h1>Управление клиентами</h1>
+    
+        <h2>Создать клиента</h2>
+        <form method="post" action="/">
+            <label for="client_id">ID клиента:</label>
+            <input type="number" id="client_id" name="client_id" required>
+            <label for="company_name">Название компании:</label>
+            <input type="text" id="company_name" name="company_name" required>
+            <button type="submit" name="create">Создать</button>
+        </form>
+    
+        <h2>Удалить клиента</h2>
+        <form method="post" action="/">
+            <label for="delete_id">ID клиента для удаления:</label>
+            <input type="number" id="delete_id" name="delete_id" required>
+            <button type="submit" name="delete">Удалить</button>
+        </form>
+    
+        <h2>Список клиентов</h2>
+        <ul>
+            {% for client in clients %}
+                <li>ID: {{ client.id }}, Название компании: {{ client.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>    
+</body>
+</html>
